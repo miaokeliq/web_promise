@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function ajax(url) {
+        return new Promise((resolve, reject) => {
+          var xhr = new XMLHttpRequest();
+          xhr.open("get", url, true);
+          xhr.send();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                //成功
+                resolve(JSON.parse(xhr.responseText));
+              } else {
+                //失败
+                reject(xhr.responseText);
+              }
+            }
+          };
+        });
+      }
+      var list = ["a", "b"];
+
+      list.forEach((item) => {
+        ajax(`http://localhost:3000/news?name=${item}`).then((res) => {
+          console.log(res);
+        });
+      });
+
+      function getData() {
+        var newList = list.map((item) => {
+          return ajax(`http://localhost:3000/news?name=${item}`);
+        });
+
+        return Promise.all(newList);
+      }
+
+      getData(list).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>
