@@ -1,4 +1,20 @@
 {
-  "news": [{ "id": 1, "title": "男人看了" }],
-  ""
+  "news": [
+    { "id": 1, "title": "男人看了", "name": "a" },
+    { "id": 2, "title": "女人看了1", "name": "b" }
+  ],
+  "commit": [
+    {
+      "id": 1,
+      "name": "mkl",
+      "commit": "没什么好说的额",
+      "newsId": 1
+    },
+    {
+      "id": 2,
+      "name": "zjh",
+      "commit": "有什么好说的额",
+      "newsId": 2
+    }
+  ]
 }
