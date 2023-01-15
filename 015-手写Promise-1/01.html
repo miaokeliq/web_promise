@@ -8,6 +8,43 @@
     <script src="./mklpromise.js"></script>
   </head>
   <body>
-    <script></script>
+    <script>
+      var p = new MklPromise((resolve, reject) => {
+        setTimeout(() => {
+          reject("2222");
+        }, 1000);
+      });
+      p.then((res) => {
+        console.log("success", res);
+      }).catch((err) => {
+        console.log("catch", err);
+      });
+
+      // p.then(
+      //   (res) => {
+      //     console.log("success1", res);
+      //     return new MklPromise((resolve, reject) => {
+      //       setTimeout(() => {
+      //         reject("mkl-" + res);
+      //       }, 1000);
+      //     });
+      //   },
+      //   (err) => {
+      //     console.log("error1", err);
+      //     return new MklPromise((resolve, reject) => {
+      //       setTimeout(() => {
+      //         reject("mkl-" + err);
+      //       }, 1000);
+      //     });
+      //   }
+      // ).then(
+      //   (res) => {
+      //     console.log("success2", res);
+      //   },
+      //   (err) => {
+      //     console.log("error2", err);
+      //   }
+      // );
+    </script>
   </body>
 </html>
