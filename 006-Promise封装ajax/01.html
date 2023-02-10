@@ -27,13 +27,16 @@
         });
       }
 
-      ajax("http://www.xiongmaoyouxuan.com/api/tabs")
+      var result = ajax("http://www.xiongmaoyouxuan.com/api/tabs")
         .then((result) => {
           console.log(result);
+          return "222";
         })
         .catch((err) => {
           console.log(err);
+          return "1111";
         });
+      console.log(result);
     </script>
   </body>
 </html>
